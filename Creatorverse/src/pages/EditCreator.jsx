@@ -56,6 +56,7 @@ export default function EditCreator() {
         <input type="text" value={creator.imageURL} onChange={(e) => setCreator({...creator, imageURL: e.target.value})} /><br />
         <input type="submit" value="Save Changes" />
       </form>
+      <button onClick = {handleDelete}>Delete</button>
     </>
   )
 }
