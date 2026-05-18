@@ -1,7 +1,8 @@
 import supabase from "../client"
 import { useState } from "react"
-
+import { useNavigate } from "react-router-dom";
 export default function AddCreator(){
+     const navigate = useNavigate();
     const [creator, setCreator] = useState({name: "",
      Url: "",
      description: "",
@@ -10,6 +11,7 @@ export default function AddCreator(){
     const handleSubmit = async (e) => {
     e.preventDefault()
     await supabase.from("creators").insert([creator])
+    navigate('/showCreators')
     }
     return (
         <>
@@ -21,13 +23,14 @@ export default function AddCreator(){
             <label>Link to their page: </label> <br></br>
             <input type="text" name="url" size = "50" value = {creator.url} onChange={(e) => setCreator({...creator, Url: e.target.value})}/> <br></br>
             <label>Description of who they are/what they do: </label> <br></br>
-            <input type="text" name="description" value = {creator.description}  onChange={(e) => setCreator({...creator, description: e.target.value})}/> <br></br>
+           <textarea rows="4" cols="50" value={creator.description} onChange={(e) => setCreator({...creator, description: e.target.value})} /> <br></br>
             <label>How they look like (A link to their image): </label> <br></br>
             <input type="text" name="imageUrl" size = "50" value = {creator.imageUrl} onChange={(e) => setCreator({...creator, imageURL: e.target.value})}/> <br></br>
             <input type = "submit"/>
             </li>
           
         </form>
+        <button onClick = {() => navigate('/showCreators')}>Go Back</button>
         </>
     )
 }

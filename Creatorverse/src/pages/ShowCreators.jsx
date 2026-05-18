@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import ContentCreator from "../Components/card"
 import supabase from "../client";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 export default function ShowCreators() {
   const [fetchError, setFetchError] = useState(null);
   const [creators, setCreators] = useState(null);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchCreators = async () => {
       const { data, error } = await supabase
@@ -29,6 +29,7 @@ export default function ShowCreators() {
 
   return (
     <div>
+        <button onClick = {() => navigate('/')}>Go back to main</button>
       {fetchError && (<p>{fetchError}</p>)}
       {creators && (
         <div>
@@ -51,7 +52,7 @@ export default function ShowCreators() {
           ))}
         </div>
       )}
-
+      
    
     </div>
   )

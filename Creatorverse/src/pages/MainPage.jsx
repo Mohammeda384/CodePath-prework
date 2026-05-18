@@ -5,8 +5,10 @@ export default function EditCreator() {
 
     return (<>
         <h1>Welcome to Creatorverse</h1>
-        <button onClick = {() => navigate('/addCreator')}>Add Content Creator</button>
-        <button onClick = {() => navigate('/showCreators')}>Show Content Creators</button>
+        <br></br>
+        <br></br>
+        <button style={{padding: '15px 32px'}} onClick = {() => navigate('/addCreator')}>Add Content Creator</button>
+        <button style = {{padding: '15px 32px'}} onClick = {() => navigate('/showCreators')}>Show Content Creators</button>
     </>)
 
 }
