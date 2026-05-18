@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import {useEffect, useState } from 'react'
 import './App.css'
 
 import { useRoutes } from "react-router-dom"
@@ -8,6 +8,7 @@ import EditCreator from './pages/EditCreator'
 import ShowCreator from './pages/ShowCreators'
 import ViewCreator from './pages/ViewCreator'
 import supabase from './client'
+
 
 function App() {
 
@@ -22,16 +23,16 @@ function App() {
     element: <AddCreator />
   },
   {
-    path: "/editCreator",
+    path: "/editCreator/:id",
     element: <EditCreator />
   },
   {
-    path: "/showCreators",
+    path: "/showcreators",
     element: <ShowCreator />,
   }
     ,
   {
-    path: "/viewCreator",
+    path: "/viewCreator/:id",
     element: <ViewCreator />
   }
 
